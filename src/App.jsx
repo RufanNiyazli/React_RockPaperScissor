@@ -4,15 +4,28 @@ import Player from "./Components/Player";
 import Oppenent from "./Components/Oppenent";
 
 function App() {
-  const [playerNumber, setPlayerNumber] = useState(null);
-  const [opponentNumber, setOpponentNumber] = useState(null);
+  const [playerNumber, setPlayerNumber] = useState(1);
+  const [opponentNumber, setOpponentNumber] = useState(1);
 
   const random = () => {
     const NewopponentNumber = Math.floor(Math.random() * 3) + 1;
     const NewplayerNumber = Math.floor(Math.random() * 3) + 1;
-    console.log(opponentNumber, playerNumber);
-    setOpponentNumber(NewopponentNumber)
-    setPlayerNumber(NewplayerNumber)
+    // console.log(opponentNumber, playerNumber);
+    setOpponentNumber(NewopponentNumber);
+    setPlayerNumber(NewplayerNumber);
+    winnerCheck()
+  };
+  const winnerCheck = () => {
+    if (
+      (playerNumber === 1 && opponentNumber === 3) ||
+      (playerNumber === 2 && opponentNumber === 1) ||
+      (playerNumber === 3 && opponentNumber === 2)
+    ) {
+      alert("Opponent wind")
+    }
+    else{
+      alert("Player wins")
+    }
   };
   return (
     <div className="container">
